@@ -2,7 +2,7 @@ export default function NetflixMainComponent()
 {
     return(
         <>
-            <div className="text-center">
+            <div className="text-center ">
                 <h1>Unlimited movies , TV shows and more.</h1>
                 <h3>
                     Watch anywhere. Cancel anytime.

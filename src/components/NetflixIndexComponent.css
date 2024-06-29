@@ -13,4 +13,11 @@
 
 section{
     height: 400px ;
+
+}
+
+footer{
+    background-color: black;
+    color: white;
+    height: 15vw;
 }
