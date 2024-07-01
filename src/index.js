@@ -8,6 +8,7 @@ import { NetflixRegisterComponent } from "./components/NetflixRegisterComponent.
 import NetflixIndexComponent  from "./components/NetflixIndexComponent.js"
 
 import LoginComponent from "./components/LoginComponent.js";
+import RegisterComponent from "./components/RegisterComponent.js";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
