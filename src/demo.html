@@ -1,0 +1,35 @@
+<!-- <head>
+    <script>
+        var categories = ["All", "Electronics","Footwear"];
+        function bodyload(){
+            for(var item of categories){
+                var li = document.createElement("li");
+                li.innerHTML = item;
+                document.querySelector("ol").appendChild(li);
+            }
+        }
+    </script>
+
+</head>
+<body onload="bodyload()">
+    <ol>
+
+    </ol>
+</body> -->
+
+<head>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        var categories = ["All", "Electronics","Footwear"];
+        $(function(){
+            $.each(categories, function(key, value){
+                $(`<li>${value}</li>`).appendTo("ol");
+            })
+        }) 
+    </script>
+</head>
+<body>
+    <ol>
+
+    </ol>
+</body>
