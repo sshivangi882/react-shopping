@@ -6,6 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import App from "./App";
 import { NetflixRegisterComponent } from "./components/NetflixRegisterComponent.js";
 import NetflixIndexComponent  from "./components/NetflixIndexComponent.js"
+import ShoppingComponent from "./components/ShoppingComponent.js";
 
 import LoginComponent from "./components/LoginComponent.js";
 import RegisterComponent from "./components/RegisterComponent.js";
@@ -15,7 +16,7 @@ import DataBindingComponent from "./components/DataBindingComponent.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DataBindingComponent />
+    <ShoppingComponent />
   </React.StrictMode>
 );
 
