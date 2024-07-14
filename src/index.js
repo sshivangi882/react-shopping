@@ -7,7 +7,7 @@ import App from "./App";
 import { NetflixRegisterComponent } from "./components/NetflixRegisterComponent.js";
 import NetflixIndexComponent  from "./components/NetflixIndexComponent.js"
 import ShoppingComponent from "./components/ShoppingComponent.js";
-
+import EventBindingComponent from "./components/EventBindingComponent.js";
 import LoginComponent from "./components/LoginComponent.js";
 import RegisterComponent from "./components/RegisterComponent.js";
 import reportWebVitals from "./reportWebVitals";
@@ -16,7 +16,7 @@ import DataBindingComponent from "./components/DataBindingComponent.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ShoppingComponent />
+    <EventBindingComponent />
   </React.StrictMode>
 );
 
