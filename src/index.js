@@ -12,11 +12,12 @@ import LoginComponent from "./components/LoginComponent.js";
 import RegisterComponent from "./components/RegisterComponent.js";
 import reportWebVitals from "./reportWebVitals";
 import DataBindingComponent from "./components/DataBindingComponent.js";
+import TwoWayBinding from "./components/TwoWayBinding.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <EventBindingComponent />
+    <TwoWayBinding />
   </React.StrictMode>
 );
 
