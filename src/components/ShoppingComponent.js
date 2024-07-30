@@ -31,7 +31,7 @@ export default function ShoppingComponent()
     useEffect(()=>{
         LoadCategories();
         LoadProducts('http://fakestoreapi.com/products');
-    },[])
+    },[cartItems.length])
 
 
     function handleCategoryChange(e){
@@ -47,10 +47,11 @@ export default function ShoppingComponent()
             fetch(`http://fakestoreapi.com/products/${e.target.id}`)
             .then(response=> response.json())
             .then(data=>{
-                setCartItems(data);
+               cartItems.push(data);
+               GetCartItemsCount();
             })
-            setItemsCount(itemsCount++);
-            GetCartItemsCount();
+            // setItemsCount(itemsCount++);
+            // GetCartItemsCount();
     }
 
     return(
@@ -73,10 +74,10 @@ export default function ShoppingComponent()
                 </div>
                </div>
             </nav>
-            <main className="col-8 d-flex flex-wrap overflow-auto" style={{height:'600px'}} >
+            <main className="col-6 d-flex flex-wrap overflow-auto" style={{height:'600px'}} >
                 {
                     products.map(product=>
-                        <div key={product.id} className="card m-2 p-2 w-25">
+                        <div key={product.id} className="card m-2 p-2" style={{width:'200px'}}>
                             <img src={product.image} className="card-img-top" height="150" />
                             <div className="card-header" style={{height:'160px'}}>
                                 <p>{product.title}</p>
@@ -101,10 +102,41 @@ export default function ShoppingComponent()
                         )
                 }
             </main>
-            <aside className="col-2">
+            <aside className="col-4">
                 <button className="btn btn-danger w-100">
                     <span className="bi bi-cart3"></span> [{itemsCount}] Your Cart Items
                 </button>
+                <table className="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Preview</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            cartItems.map(item =>
+                                <tr key={item.id}>
+                                    <td>{item.title}</td>
+                                    <td>{item.price}</td>
+                                    <td>
+                                        <img src = {item.image} width={50} height={50}/>
+                                    </td>
+
+                                    <td>
+                                        <button className="btn btn-danger">
+                                            <span className="bi bi-trash"></span>
+                                        </button>
+
+                                    </td>
+                                   
+                                </tr>
+                            )
+                        }
+                    </tbody>
+
+                </table>
             </aside>
           </section>
         </div>
