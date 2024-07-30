@@ -17,7 +17,7 @@ import TwoWayBinding from "./components/TwoWayBinding.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <TwoWayBinding />
+    <ShoppingComponent />
   </React.StrictMode>
 );
 
