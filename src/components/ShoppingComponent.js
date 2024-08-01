@@ -5,7 +5,7 @@ export default function ShoppingComponent() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [itemsCount, setItemsCount] = useState(0);
-  const [removeItem, setRemoveItem] = useState(0);
+  // const [removeItem, setRemoveItem] = useState(0);
 
   function GetCartItemsCount() {
     setItemsCount(cartItems.length);
