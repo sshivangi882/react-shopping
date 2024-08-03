@@ -14,11 +14,13 @@ import reportWebVitals from "./reportWebVitals";
 import DataBindingComponent from "./components/DataBindingComponent.js";
 import TwoWayBinding from "./components/TwoWayBinding.js";
 import TwoWayClassDemo from "./components/TwoWayClassDemo.js";
+// import TwoWayFunctionDemo from "./components/TwoWayFunctionDemo.js";
+import ShoppingClassDemo from "./components/ShoppingClassDemo.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <TwoWayClassDemo />
+    <ShoppingClassDemo />
   </React.StrictMode>
 );
 
