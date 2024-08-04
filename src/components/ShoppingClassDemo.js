@@ -1,5 +1,5 @@
 import React from "react";
-
+import  CardComponent  from "./CardComponent";
 export default class ShoppingClassDemo extends React.Component
 {
     constructor(props){
@@ -62,14 +62,18 @@ export default class ShoppingClassDemo extends React.Component
                     <main className="col-9">
                         <div className="d-flex flex-wrap">
                             {
+                                // this.state.products.map(product=>
+                                //     <div key={product.id} className="card m-2 p-2" style={{width:'200px'}}>
+                                //         <img  src={product.image} className="card-img-top" height="150" />
+                                //         <div className="card-header" style={{height:'160px'}}>
+                                //             <p>{product.title}</p>
+                                //         </div>
+                                //     </div>
+                                //     )
+
                                 this.state.products.map(product=>
-                                    <div key={product.id} className="card m-2 p-2" style={{width:'200px'}}>
-                                        <img  src={product.image} className="card-img-top" height="150" />
-                                        <div className="card-header" style={{height:'160px'}}>
-                                            <p>{product.title}</p>
-                                        </div>
-                                    </div>
-                                    )
+                                    <CardComponent key={product.id} product={product} />
+                                )
     
                             }
                         </div>
