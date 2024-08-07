@@ -18,11 +18,12 @@ import TwoWayClassDemo from "./components/TwoWayClassDemo.js";
 import ShoppingClassDemo from "./components/ShoppingClassDemo.js";
 import FormComponent from "./components/FormComponent.js";
 import FormikDemo from "./components/FormikDemo.js";
+import FormikValidation from "./components/FormikValidation.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FormikDemo />
+    <FormikValidation />
   </React.StrictMode>
 );
 
