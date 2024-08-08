@@ -19,11 +19,12 @@ import ShoppingClassDemo from "./components/ShoppingClassDemo.js";
 import FormComponent from "./components/FormComponent.js";
 import FormikDemo from "./components/FormikDemo.js";
 import FormikValidation from "./components/FormikValidation.js";
+import YupValidation from "./components/YupValidation.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FormikValidation />
+    <YupValidation />
   </React.StrictMode>
 );
 
