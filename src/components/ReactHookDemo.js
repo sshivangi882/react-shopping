@@ -13,6 +13,7 @@ export default function ReactHookDemo() {
         <div className='container-fluid'>
             <button onClick={handleSuccessClick}>Success</button>
             <button onClick={handleErrorClick}>Invalid</button>
+            <hr></hr>
             <div>
                 {msg}
             </div>
