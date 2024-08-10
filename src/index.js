@@ -21,11 +21,13 @@ import FormikDemo from "./components/FormikDemo.js";
 import FormikValidation from "./components/FormikValidation.js";
 import YupValidation from "./components/YupValidation.js";
 import YupValidationComponent from "./components/YupValidationComponent.js";
+import LifeCycleDemo from "./components/LifeCycleDemo.js";
+import ReactHookDemo from "./components/ReactHookDemo.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <YupValidationComponent />
+    <ReactHookDemo  />
   </React.StrictMode>
 );
 

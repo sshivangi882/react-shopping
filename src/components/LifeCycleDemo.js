@@ -1,5 +1,13 @@
 import React from "react";
-class SuccessComponent extends React.Component {
+
+class SuccessComponent extends React.Component
+{
+    componentDidMount(){
+        alert('Success Component will render');
+    }
+    componentWillUnmount(){
+        alert('Success Component will unmount');
+    }
     render(){
         return(
             <div>
@@ -8,60 +16,84 @@ class SuccessComponent extends React.Component {
         )
     }
 }
-
-class ErrorComponent extends React.Component {
+class ErrorComponent extends React.Component
+{
+    componentDidMount(){
+        alert('Error Component will render');
+    }
+    componentWillUnmount(){
+        alert('Error Component will unmount');
+    }
     render(){
         return(
             <div>
-                <h2> Invalid Login ..</h2>
+                <h2>Invalid Login</h2>
             </div>
         )
     }
 }
-export default class LifeCycleDemo extends React.Component 
+
+export default class LifeCycleDemo extends React.Component
 {
     constructor(props){
         super(props);
         this.state = {
-            userDetails :{
-                UserName: 'admin',
-                Password: 'admin'
+            userDetails: { 
+                UserName: 'john_nit',
+                Password: 'john@11'
             },
-            formDetails :{
+            formDetails: {
                 UserName: '',
                 Password: ''
             },
-            result : ''
-            };
-        
+            result: ''
+        }
         this.handleUserName = this.handleUserName.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
     }
-
-
 
     handleUserName(event){
         this.setState({
-            UserName: event.target.value,
-            Password : this.state.formDetails.Password
+            formDetails: {
+                UserName: event.target.value,
+                Password: this.state.formDetails.Password
+            }
         })
     }
     handlePassword(event){
         this.setState({
-            UserName: this.state.formDetails.UserName,
-            Password : event.target.value
+            formDetails: {
+                UserName: this.state.formDetails.UserName,
+                Password: event.target.value
+            }
         })
     }
+    handleLoginClick(){
+        if(this.state.formDetails.UserName==this.state.userDetails.UserName && this.state.formDetails.Password==this.state.userDetails.Password) {
+            this.setState({
+                result: <SuccessComponent />
+            })
+        } else {
+            this.setState({
+                result: <ErrorComponent />
+            })
+        }
+    }
+
     render(){
         return(
-            <div>
+            <div className="container">
                 <dl>
-                    <dt>UserName</dt>
-                    <dd><input type="text"></input></dd>
-                    <dt>password</dt>
-                    <dd><input type="password"></input></dd>
+                    <dt>User Name</dt>
+                    <dd><input onChange={this.handleUserName} type="text"/></dd>
+                    <dt>Password</dt>
+                    <dd><input onChange={this.handlePassword} type="password"/></dd>
                 </dl>
-                <button>Login</button>
+                <button onClick={this.handleLoginClick}>Login</button>
+                <div>
+                    {this.state.result}
+                </div>
             </div>
         )
     }
