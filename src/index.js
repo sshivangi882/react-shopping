@@ -24,11 +24,15 @@ import YupValidationComponent from "./components/YupValidationComponent.js";
 import LifeCycleDemo from "./components/LifeCycleDemo.js";
 import ReactHookDemo from "./components/ReactHookDemo.js";
 import ContextDemo from "./components/ContextDemo.js";
+import { CookiesProvider } from "react-cookie";
+import { UserLogin } from "./components/UserLogin.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ContextDemo  />
+    <CookiesProvider>
+      <UserLogin />
+    </CookiesProvider>
   </React.StrictMode>
 );
 
