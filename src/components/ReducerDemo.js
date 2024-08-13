@@ -1,5 +1,5 @@
 import { useReducer, useState, useEffect } from "react"
-import { useFetchData } from "../hooks/useFetchData";
+
 var initialState = {likes:0, dislikes: 0};
 
 function reducer(state, action){
@@ -14,8 +14,7 @@ function reducer(state, action){
 export default function ReducerDemo() {
     
     const[state, dispatch] = useReducer( reducer, initialState);
-    // const [product, setproduct] = useState({});
-    const [data] = useFetchData("http://fakestoreapi.com/products/2");
+    const [product, setproduct] = useState({});
 
   
  
@@ -32,9 +31,9 @@ export default function ReducerDemo() {
             product.title
            } */}
            <div className="card p-2" style={{width:'200px'}}>
-                <img src={data.image} className="card-img-top" height={160}/>
+                <img src={product.image} className="card-img-top" height={160}/>
                 <div className="card-header">
-                    <p>{data.title}</p>
+                    <p>{product.title}</p>
                 </div>
            </div>
            <div className="card-footer">
