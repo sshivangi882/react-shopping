@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 
 export default function JQueryAjaxDemo() {
   const [users, setUsers] = useState([]);
+  const [userError, setError] = useState("");
+
   const formik = useFormik({
     initialValues: {
       UserId: "",
@@ -23,7 +25,27 @@ export default function JQueryAjaxDemo() {
       alert("User Registered");
     },
   });
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    $.ajax({
+      method: "GET",
+      url: "http://localhost:4000/getusers",
+      success: function (response) {
+        setUsers(response);
+      },
+    });
+  }, []);
+
+  function VerifyUserId(e) {
+    for (var user of users) {
+      if (user.UserId == e.target.value) {
+        setError("User Id already exists");
+        break;
+      } else {
+        setError("User Id Available");
+      }
+    }
+  }
   return (
     <div className="container-fluid">
       <h2>Register User</h2>
@@ -36,8 +58,10 @@ export default function JQueryAjaxDemo() {
               onChange={formik.handleChange}
               value={formik.values.UserId}
               name="UserId"
+              onKeyUp={VerifyUserId}
             />
           </dd>
+          <dd className="text-danger">{userError}</dd>
           <dt>User Name</dt>
           <dd>
             <input
