@@ -28,11 +28,12 @@ import { CookiesProvider } from "react-cookie";
 import { UserLogin } from "./components/UserLogin.js";
 import ReducerDemo from "./components/ReducerDemo.js";
 import CustomHookDemo from "./components/CustomHookDemo.js";
+import JQueryAjaxDemo from "./components/JQueryAjaxDemo.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserLogin />
+    <JQueryAjaxDemo />
   </React.StrictMode>
 );
 
