@@ -30,11 +30,12 @@ import ReducerDemo from "./components/ReducerDemo.js";
 import CustomHookDemo from "./components/CustomHookDemo.js";
 import JQueryAjaxDemo from "./components/JQueryAjaxDemo.js";
 import AxiosDemo from "./components/AxiosDemo.js";
+import ShoppingIndex from "./Shopping/ShoppingIndex.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AxiosDemo />
+    <ShoppingIndex />
   </React.StrictMode>
 );
 
