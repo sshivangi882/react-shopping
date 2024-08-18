@@ -32,7 +32,7 @@ import JQueryAjaxDemo from "./components/JQueryAjaxDemo.js";
 import AxiosDemo from "./components/AxiosDemo.js";
 import ShoppingIndex from "./Shopping/ShoppingIndex.js";
 import SPAComponent from "./components/SPAComponent.js";
-import IShopIndex from "./ishop/IShoIndex.js";
+import IShopIndex from "./ishop/IShopndex.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
