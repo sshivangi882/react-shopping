@@ -31,11 +31,12 @@ import CustomHookDemo from "./components/CustomHookDemo.js";
 import JQueryAjaxDemo from "./components/JQueryAjaxDemo.js";
 import AxiosDemo from "./components/AxiosDemo.js";
 import ShoppingIndex from "./Shopping/ShoppingIndex.js";
+import SPAComponent from "./components/SPAComponent.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ShoppingIndex />
+    <SPAComponent />
   </React.StrictMode>
 );
 
