@@ -126,13 +126,16 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+async function connectToDatabase() {
+  const client = await MongoClient.connect(connectionString);
+  return client.db("reactdb");
+}
+
 app.get("/getusers", async (req, res) => {
   try {
-    const client = await MongoClient.connect(connectionString);
-    const database = client.db("reactdb");
+    const database = await connectToDatabase();
     const users = await database.collection("tblusers").find({}).toArray();
     res.send(users);
-    await client.close();
   } catch (err) {
     console.error("Error fetching users:", err);
     res.status(500).send("Error fetching users");
@@ -150,15 +153,55 @@ app.post("/registeruser", async (req, res) => {
       Subscribed: req.body.Subscribed === "true",
     };
 
-    const client = await MongoClient.connect(connectionString);
-    const database = client.db("reactdb");
+    const database = await connectToDatabase();
     await database.collection("tblusers").insertOne(userdetails);
     console.log("Record Inserted");
     res.redirect("/getusers");
-    await client.close();
   } catch (err) {
     console.error("Error inserting user:", err);
     res.status(500).send("Error inserting user");
+  }
+});
+
+app.get("/getproducts", async (req, res) => {
+  try {
+    const database = await connectToDatabase();
+    const products = await database
+      .collection("tblproducts")
+      .find({})
+      .toArray();
+    res.send(products);
+  } catch (err) {
+    console.error("Error fetching products:", err);
+    res.status(500).send("Error fetching products");
+  }
+});
+
+app.get("/getcategories", async (req, res) => {
+  try {
+    const database = await connectToDatabase();
+    const categories = await database
+      .collection("tblcategories")
+      .find({})
+      .toArray();
+    res.send(categories);
+  } catch (err) {
+    console.error("Error fetching categories:", err);
+    res.status(500).send("Error fetching categories");
+  }
+});
+
+app.get("/getproduct/:id", async (req, res) => {
+  try {
+    const productId = parseInt(req.params.id);
+    const database = await connectToDatabase();
+    const product = await database
+      .collection("tblproducts")
+      .findOne({ id: productId });
+    res.send(product);
+  } catch (err) {
+    console.error("Error fetching product:", err);
+    res.status(500).send("Error fetching product");
   }
 });
 
