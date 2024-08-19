@@ -36,6 +36,12 @@ export default function IShopIndex() {
               <Route path="register" element={<IShopRegister />} />
               <Route path="login" element={<IShopLogin />} />
               <Route path="dashboard" element={<IShopDashBoard />} />
+              <Route path="errorPage" element={ 
+                <div>
+                  <h2 className="text-danger"> Invalid Credentials</h2>
+                  <Link to ="/login">Try Again</Link>
+                </div>
+              } />
             </Routes>
           </main>
         </BrowserRouter>
