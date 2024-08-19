@@ -15,15 +15,20 @@ export default function IShopLogin() {
       UserId: "",
       Password: "",
     },
+
+    
     onSubmit: (values) => {
+        let userFound = false;
       for (var user of users) {
         if (user.UserId == values.UserId && user.Password == values.Password) {
-            setCookie("userid",user.UserId);
+          setCookie("userid", user.UserId);
           navigate("/dashboard");
+          userFound = true;
           break;
-        } else {
-          navigate("/errorPage");
         }
+        }
+        if (!userFound) {
+            navigate("/errorPage");
       }
     },
   });
@@ -36,7 +41,7 @@ export default function IShopLogin() {
   return (
     <div>
       <h2>User Login</h2>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <dl>
           <dt>User Id</dt>
           <dd>
@@ -51,13 +56,13 @@ export default function IShopLogin() {
           <dd>
             <input
               name="password"
-            //   value={formik.values.Password}
+              value={formik.values.password}
               onChange={formik.handleChange}
               type="password"
             />
           </dd>
         </dl>
-        <button onSubmit={formik.handleSubmit} className="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Login
         </button>
         <br></br>

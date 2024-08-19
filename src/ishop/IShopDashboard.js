@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import React from "react";
 
@@ -8,6 +9,7 @@ export default function IShopDashBoard(){
 
     const [cookies, setCookie, removeCookie] = useCookies();
     const [userid, setUserId] = useState();
+    let navigate = useNavigate();
 
     useEffect(() =>{
         setUserId(cookies["userid"]);
@@ -15,6 +17,7 @@ export default function IShopDashBoard(){
 
     function handleSignOut(){
         removeCookie("userid");
+        navigate("/login");
     }
     return(
         <div>
