@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-// import { response } from "express";
 import { useCookies } from "react-cookie";
 
 export default function IShopLogin() {
@@ -13,22 +12,21 @@ export default function IShopLogin() {
   const formik = useFormik({
     initialValues: {
       UserId: "",
-      Password: "",
+      Password: "", // Correct this to match the input name
     },
 
-    
     onSubmit: (values) => {
-        let userFound = false;
-      for (var user of users) {
-        if (user.UserId == values.UserId && user.Password == values.Password) {
+      let userFound = false;
+      for (let user of users) {
+        if (user.UserId === values.UserId && user.Password === values.Password) { // Case-sensitive match
           setCookie("userid", user.UserId);
           navigate("/dashboard");
           userFound = true;
           break;
         }
-        }
-        if (!userFound) {
-            navigate("/errorPage");
+      }
+      if (!userFound) {
+        navigate("/errorPage");
       }
     },
   });
@@ -37,7 +35,8 @@ export default function IShopLogin() {
     axios.get("http://localhost:4000/getusers").then((response) => {
       setUsers(response.data);
     });
-  });
+  }, []); // Add dependency array to avoid infinite API calls
+
   return (
     <div>
       <h2>User Login</h2>
@@ -55,8 +54,8 @@ export default function IShopLogin() {
           <dt>Password</dt>
           <dd>
             <input
-              name="password"
-              value={formik.values.password}
+              name="Password" // Match case with initialValues
+              value={formik.values.Password}
               onChange={formik.handleChange}
               type="password"
             />
