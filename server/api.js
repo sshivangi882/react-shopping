@@ -191,13 +191,36 @@ app.get("/getcategories", async (req, res) => {
   }
 });
 
+// app.get("/getproduct/:id", async (req, res) => {
+//   try {
+//     const productId = parseInt(req.params.id);
+//     const database = await connectToDatabase();
+//     const product = await database
+//       .collection("tblproducts")
+//       .findOne({ id: productId });
+//     res.send(product);
+//   } catch (err) {
+//     console.error("Error fetching product:", err);
+//     res.status(500).send("Error fetching product");
+//   }
+// });
+
 app.get("/getproduct/:id", async (req, res) => {
   try {
-    const productId = parseInt(req.params.id);
+    const productId = parseInt(req.params.id, 10);
+    if (isNaN(productId)) {
+      return res.status(400).send("Invalid product ID");
+    }
+
     const database = await connectToDatabase();
     const product = await database
       .collection("tblproducts")
       .findOne({ id: productId });
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
     res.send(product);
   } catch (err) {
     console.error("Error fetching product:", err);
