@@ -3,6 +3,7 @@ import IShopHome from "./IShopHome";
 import IShopRegister from "./IShopRegister";
 import IShopLogin from "./IShopLogin";
 import IShopDashBoard from "./IShopDashBoard";
+import IShopProduct from "./IShopProduct";
 
 export default function IShopIndex() {
   return (
@@ -36,6 +37,7 @@ export default function IShopIndex() {
               <Route path="register" element={<IShopRegister />} />
               <Route path="login" element={<IShopLogin />} />
               <Route path="dashboard" element={<IShopDashBoard />} />
+              <Route path="products/:category" element={<IShopProduct />} />
               <Route path="errorPage" element={ 
                 <div>
                   <h2 className="text-danger"> Invalid Credentials</h2>

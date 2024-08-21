@@ -1,47 +1,53 @@
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import React from "react";
+export default function IShopDashBoard() {
+  const [cookies, setCookie, removeCookie] = useCookies(["userid"]);
+  const [userid, setUserId] = useState("");
+  const [categories, setCategories] = useState([]);
+  let navigate = useNavigate();
 
-export default function IShopDashBoard(){
+  function LoadCategories() {
+    axios
+      .get("http://localhost:4000/getcategories")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
+      });
+  }
 
-    const [cookies, setCookie, removeCookie] = useCookies();
-    const [userid, setUserId] = useState();
-    const [categories, setCategories] = useState([]);
-    let navigate = useNavigate();
+  useEffect(() => {
+    setUserId(cookies["userid"]);
+    LoadCategories();
+  }, [cookies]);
 
-    function LoadCategories(){
-        axios.get("http://localhost:4000/getcategories")
-        .then((response) => {
-            setCategories(response.data);
+  function handleSignOut() {
+    removeCookie("userid");
+    navigate("/login");
+  }
 
-        });
-    }
-
-    useEffect(() =>{
-        setUserId(cookies["userid"]);
-        LoadCategories();
-    })
-
-    function handleSignOut(){
-        removeCookie("userid");
-        navigate("/login");
-    }
-    return(
-        <div>
-            <h2>User Dashboard {userid} - <button onClick={handleSignOut} className="btn btn-link">SignOut</button></h2>
-            <h3> Product Categories</h3>
-            <ol>
-                {
-                    categories.map((item=>
-                        <li key={item.category}>{item.category.toUpperCase()}</li>
-                    )
-                )
-                }
-            </ol>
-        </div>
-    )
+  return (
+    <div>
+      <h2>
+        User Dashboard {userid} -{" "}
+        <button onClick={handleSignOut} className="btn btn-link">
+          SignOut
+        </button>
+      </h2>
+      <h3>Product Categories</h3>
+      <ol>
+        {categories.map((item) => (
+          <li key={item.category}>
+            <Link to={"/products/" + item.category}>
+              {item.category.toUpperCase()}
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
 }
