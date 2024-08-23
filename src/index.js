@@ -35,11 +35,12 @@ import SPAComponent from "./components/SPAComponent.js";
 import IShopIndex from "./ishop/IShopndex.js";
 import BankAppHome from "./BankApp/BankAppHome.js";
 import MainComponent from "./BankApp/MainComponent.js";
+import SearchDemo from "./components/SearchDemo.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MainComponent />
+    <SearchDemo />
   </React.StrictMode>
 );
 
