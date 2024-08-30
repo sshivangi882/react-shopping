@@ -40,7 +40,7 @@ import SearchDemo from "./components/SearchDemo.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <SearchDemo />
+    <IShopIndex />
   </React.StrictMode>
 );
 
